@@ -1,0 +1,12 @@
+﻿HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: *
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: *
+Content-type: application/json
+Content-Length: 91
+Date: Sun, 17 May 2026 12:45:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"gateId":"GATE-01","state":"OPEN","faultReason":null,"lastUpdated":"2026-05-17T08:00:00Z"}

@@ -1,0 +1,12 @@
+﻿HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: *
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: *
+Content-type: application/json
+Content-Length: 229
+Date: Sun, 17 May 2026 12:45:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"items":[{"logId":"0196fb3d-4ad7-7d1e-9f49-5d5148d2babc","cardId":"RFID-2026-001","gateId":"GATE-01","direction":"IN","timestamp":"2026-05-17T07:55:00Z","status":"ALLOWED","operatorNote":null}],"nextCursor":null,"hasMore":false}

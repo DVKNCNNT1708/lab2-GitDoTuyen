@@ -1,0 +1,12 @@
+﻿HTTP/1.1 401 Unauthorized
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: *
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: *
+Content-type: application/problem+json
+Content-Length: 189
+Date: Sun, 17 May 2026 12:45:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"type":"https://campus.local/errors/unauthorized","title":"ChÆ°a xĂ¡c thá»±c","status":401,"detail":"Thiáº¿u Bearer token","instance":"https://campus.local/access/logs/recent","errors":[]}

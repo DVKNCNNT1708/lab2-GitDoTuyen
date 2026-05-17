@@ -1,0 +1,52 @@
+﻿=== REQ-01: GET /health — Happy Path (200 OK) ===
+Command: curl.exe -s -i http://127.0.0.1:4010/health
+
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{"status":"ok","service":"access-gate","time":"2026-05-17T08:00:00Z"}
+
+---
+
+=== REQ-02: GET /access/logs/recent?limit=5 — Happy Path (200 OK) ===
+Command: curl.exe -s -i "http://127.0.0.1:4010/access/logs/recent?limit=5" -H "Authorization: Bearer test-token"
+
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{"items":[{"logId":"0196fb3d-4ad7-7d1e-9f49-5d5148d2babc","cardId":"RFID-2026-001","gateId":"GATE-01","direction":"IN","timestamp":"2026-05-17T07:55:00Z","status":"ALLOWED","operatorNote":null}],"nextCursor":null,"hasMore":false}
+
+---
+
+=== REQ-03: GET /gates/GATE-01/status — Happy Path (200 OK) ===
+Command: curl.exe -s -i "http://127.0.0.1:4010/gates/GATE-01/status" -H "Authorization: Bearer test-token"
+
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{"gateId":"GATE-01","state":"OPEN","faultReason":null,"lastUpdated":"2026-05-17T08:00:00Z"}
+
+---
+
+=== REQ-04: GET /cards/RFID-2026-001 — Happy Path (200 OK) — oneOf discriminator ===
+Command: curl.exe -s -i "http://127.0.0.1:4010/cards/RFID-2026-001" -H "Authorization: Bearer test-token"
+
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{"cardId":"RFID-2026-001","holderName":"Nguyen Van A","holderType":"STAFF","issuedAt":"2026-01-01T00:00:00Z","expiresAt":"2027-01-01T00:00:00Z","cardStatus":{"statusCode":"ACTIVE","activatedAt":"2026-01-01T00:00:00Z"}}
+
+---
+
+=== REQ-05: GET /access/logs/recent — Error Case (401 Unauthorized) ===
+Command: curl.exe -s -i "http://127.0.0.1:4010/access/logs/recent" -H "Authorization: Bearer bad-token" -H "Prefer: code=401"
+
+HTTP/1.1 401 Unauthorized
+Content-type: application/problem+json
+
+{"type":"https://campus.local/errors/unauthorized","title":"Chua xac thuc","status":401,"detail":"Thieu Bearer token","instance":"https://campus.local/access/logs/recent","errors":[]}
+
+---
+Spectral lint: No results with a severity of 'error' found!
+Prism mock: Listening on http://127.0.0.1:4010
+Test executed: 2026-05-17T19:44:00+07:00
